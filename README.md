@@ -1,152 +1,121 @@
 # Blockchain Mining Simulator
 
-A modular Python project for teaching **blockchain data structures**, **Proof-of-Work (PoW)**, and **fork/orphan visualization**.
+An educational Python project for simulating blockchain mining, Proof-of-Work (PoW), fork formation, and blockchain visualization.
 
-This refactored version is designed for GitHub presentation, course submission, and academic-style demonstration. Compared with the original single-file Tkinter implementation, the project now separates:
-
-- blockchain data modeling
-- block parsing and validation
-- mining logic
-- statistics export
-- tree-layout computation
-- SVG rendering
-- Tkinter GUI orchestration
-- tests and CLI examples
+Built with a Tkinter GUI and a modular code structure, this project is designed for teaching, demonstrations, and introductory blockchain experiments.
 
 ## Highlights
 
-- **Modular architecture** with a `src/` package layout
-- **Proof-of-Work simulation** using SHA-256 and adjustable mining difficulty
-- **Interactive GUI** for adding blocks, mining new blocks, exporting SVG, and exporting Excel statistics
-- **Fork / orphan block visualization** with explicit error highlighting
-- **Reusable core logic** that can be tested independently of the GUI
-- **Academic-friendly structure** for experiments, demos, and future extensions
+- Proof-of-Work mining with adjustable difficulty
+- Genesis block generation and next-block mining
+- Validation of block structure, hash, height, and parent linkage
+- Visualization of main chain, forks, and orphan blocks
+- SVG export for blockchain diagrams
+- Excel export for miner statistics
+- Modular architecture for easier extension and maintenance
 
 ## Project Structure
 
 ```text
 blockchain-mining-simulator/
-├── examples/
-│   └── cli_demo.py
-├── src/
-│   └── blockchain_mining_simulator/
-│       ├── __init__.py
-│       ├── chain.py
-│       ├── config.py
-│       ├── gui.py
-│       ├── layout.py
-│       ├── main.py
-│       ├── mining.py
-│       ├── models.py
-│       ├── parsing.py
-│       ├── pow.py
-│       ├── statistics.py
-│       └── svg.py
-├── tests/
-│   └── test_parser_and_chain.py
-├── .gitignore
+├── README.md
 ├── pyproject.toml
 ├── requirements.txt
-└── README.md
-```
+├── examples/
+├── tests/
+└── src/
+    └── blockchain_mining_simulator/
+        ├── main.py
+        ├── gui.py
+        ├── chain.py
+        ├── config.py
+        ├── layout.py
+        ├── mining.py
+        ├── parsing.py
+        ├── statistics.py
+        └── svg.py
+````
 
 ## Installation
 
-### 1. Clone the repository
-
 ```bash
-git clone https://github.com/your-username/blockchain-mining-simulator.git
+git clone https://github.com/zhangqingyue127/blockchain-mining-simulator.git
 cd blockchain-mining-simulator
-```
-
-### 2. Install dependencies
-
-```bash
 pip install -r requirements.txt
+pip install -e .
 ```
 
-## Run the GUI
-
-Recommended:
+## Run
 
 ```bash
-pip install -e .
 python -m blockchain_mining_simulator.main
 ```
 
-Alternative without editable installation:
+## What This Project Demonstrates
 
-```bash
-PYTHONPATH=src python -m blockchain_mining_simulator.main
-```
+* how Proof-of-Work mining searches for a valid nonce
+* how parent hashes connect blocks into a chain
+* how forks and orphan blocks emerge
+* how invalid blocks can still be visualized for analysis
+* how difficulty changes affect mining behavior
 
-## Run the CLI Demo
+## Main Features
 
-```bash
-python examples/cli_demo.py
-```
+### Simulation
 
-## Run Tests
+* user-defined genesis difficulty
+* next-block auto mining
+* manual block insertion
+* difficulty adjustment
+* invalid block detection
+
+### Visualization
+
+* tree-style blockchain layout
+* color-coded valid and invalid blocks
+* fork and orphan display
+* difficulty-change markers
+
+### Export
+
+* SVG visualization export
+* Excel leaderboard/statistics export
+
+## Example Workflow
+
+1. Launch the application
+2. Mine the genesis block
+3. Set the next miner name
+4. Search for the next valid block
+5. Copy the mined block string
+6. Add the block to the chain
+7. Observe the updated blockchain graph
+
+## Testing
 
 ```bash
 pytest
 ```
 
-## Typical Workflow
+## Example CLI Demo
 
-1. Launch the GUI.
-2. Set the mining difficulty for the genesis block.
-3. Mine the genesis block automatically.
-4. Set the next miner name.
-5. Click **Search Next Block** to generate a valid block.
-6. Add the block directly or copy the generated block string.
-7. Export the current chain as SVG or export miner statistics to Excel.
-
-## Core Design
-
-### `pow.py`
-Implements SHA-256 hashing, block-string construction, and nonce search.
-
-### `parsing.py`
-Parses raw input strings such as:
-
-```text
-Pre=<parent_hash>; Height=<height>; ->[Alice]:50; Nonce=12345
+```bash
+python examples/cli_demo.py
 ```
-
-and performs structural validation.
-
-### `chain.py`
-Maintains the blockchain state, difficulty updates, duplicate handling, parent lookup, orphan detection, and user statistics.
-
-### `layout.py`
-Computes a deterministic tree layout for valid chains, forks, and orphan blocks.
-
-### `svg.py`
-Exports the current visualization to a large fixed-size SVG canvas.
-
-### `gui.py`
-Provides the interactive Tkinter application and connects the user interface to the backend modules.
-
-## Recommended Repository Improvements
-
-If you want to polish the GitHub repository even further, the next step could be adding:
-
-- screenshots or GIFs in `docs/`
-- GitHub Actions for automated testing
-- benchmark scripts for difficulty comparison
-- bilingual documentation (English + Chinese)
-- a `CITATION.cff` file for academic sharing
-
-## Requirements
-
-- Python 3.10+
-- pandas
-- openpyxl
-- pytest
 
 ## Notes
 
-- Tkinter is part of the Python standard library on most desktop Python installations.
-- SVG export is independent of the GUI drawing code, so it can be reused in future CLI or web versions.
-- The current block-string format is intentionally simple for educational readability.
+This is an educational simulator, not a production blockchain implementation. It does not include networking, distributed consensus, wallets, signatures, or transaction pools.
+
+## License
+
+No license file is currently included. Add one if you want to define reuse permissions.
+
+## Author
+
+Zhang Qingyue
+
+GitHub: `https://github.com/zhangqingyue127/blockchain-mining-simulator`
+
+```
+```
