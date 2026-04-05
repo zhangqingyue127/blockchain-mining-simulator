@@ -1,8 +1,11 @@
 # Blockchain Mining Simulator
 
+> This project was developed as a course experiment for the junior-year first-semester course **“Blockchain Technology (Financial Certification-Theory and Practice)”**.
+
 An educational Python project for simulating blockchain mining, Proof-of-Work (PoW), fork formation, and blockchain visualization.
 
 Built with a Tkinter GUI and a modular code structure, this project is designed for teaching, demonstrations, and introductory blockchain experiments.
+
 
 ## Highlights
 
